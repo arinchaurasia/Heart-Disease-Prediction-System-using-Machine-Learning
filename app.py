@@ -63,20 +63,20 @@ with tab1:
             predictions.append(prediction)
         return predictions
     
-# Create a submit button to make predictions
-if st.button("Submit"):
-    st.subheader('Results....')
-    st.markdown('------------------------')
-
-    result = predict_heart_disease(input_data)
-
-    for i in range(len(result)):
-        st.subheader(algonames[i])
-        if result[i][0] == 0:
-            st.write("No heart disease detected.")
-        else:
-            st.write("Heart disease detected.")
+    # Create a submit button to make predictions
+    if st.button("Submit"):
+        st.subheader('Results....')
         st.markdown('------------------------')
+    
+        result = predict_heart_disease(input_data)
+    
+        for i in range(len(result)):
+            st.subheader(algonames[i])
+            if result[i][0] == 0:
+                st.write("No heart disease detected.")
+            else:
+                st.write("Heart disease detected.")
+            st.markdown('------------------------')
 
 
 with tab2:
@@ -158,4 +158,5 @@ with tab3:
     df = pd.DataFrame(list(zip(Models,Accuracies)),columns =['Models','Accuracies'])
     fig = px.bar(df,y = 'Accuracies', x = 'Models')
     st.plotly_chart(fig)
+
 
